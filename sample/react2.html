@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<main id="app"></main>
+		<script src="babel.min.js"></script>
+		<script src="react.js"></script>
+		<script src="react-dom.js"></script>
+		<script type="text/babel">
+			function Hello(props) {
+				return(
+					<div onClick={props.onClick}>
+						Hello {props.name} {props.count}
+					</div>
+				);
+			}
+
+			class HelloMessage extends React.PureComponent {
+				constructor(props) {
+					super(props);
+
+					this.state = {
+						count: 1
+					}
+
+					this.handlerClick = this.handlerClick.bind(this);
+
+					console.log('constructor')
+				}
+
+				render() {
+					return (
+						<Hello
+							name={this.props.name} 
+							count={this.state.count}
+							onClick={this.handlerClick} />
+					);
+				}
+
+				componentWillMount (p) {
+					console.log('componentWillMount', p)
+				}
+				componentDidMount (p) {
+					console.log('componentDidMount', p)
+				}
+				componentWillReceiveProps (nextProps) {
+					console.log('componentWillReceiveProps', nextProps)
+				}
+				shouldComponentUpdate (nextProps, nextState) {
+					console.log('shouldComponentUpdate', nextProps, nextState)
+					return true;
+				}
+				componentWillUpdate (nextProps) {
+					console.log('componentWillUpdate', nextProps)
+				}
+				componentDidUpdate (oldProps) {
+					console.log('componentDidUpdate', oldProps)
+				}
+				componentWillUnmount (p) {
+					console.log('componentWillUnmount', p)
+				}
+
+				handlerClick() {
+					console.log(this)
+				}
+			}
+
+			ReactDOM.render(
+				<HelloMessage name="Juan"/>,
+				document.getElementById('app')
+			);
+
+			//ReactDOM.render(
+			//	React.createElement(HelloMessage, {name: 'Juan'}), 
+			//	document.getElementById('app')
+			//);
+
+			setTimeout(() => {
+				ReactDOM.render(
+					<HelloMessage name="Pablo"/>,
+					document.getElementById('app')
+				);
+
+				//ReactDOM.render(
+				//	React.createElement(HelloMessage, {name: 'Pablo'}), 
+				//	document.getElementById('app')
+				//);
+			}, 1000)
+		</script>
+		
+	</body>
+</html>
