@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class About extends Component {
+class Profile extends Component {
 	render() {
 		return (
-			<section name="about">
-				<h1>About</h1>
+			<section name="profile">
+				<h1>Profile</h1>
 				<Link to="/">
 					Go to home
-				</Link>
-				<Link to="/random">
-					Go to random
 				</Link>
 			</section>
 		);
 	}
 }
 
-export default About;
+export default Profile;
