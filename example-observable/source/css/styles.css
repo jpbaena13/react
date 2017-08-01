@@ -1,0 +1,18 @@
+body, html {
+	font-family: arial;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+}
+#first {
+	border: thin solid red;
+	float: left;
+	height: 300px;
+	width: 300px;
+}
+#second {
+	border: thin solid blue;
+	float: right;
+	height: 300px;
+	width: 300px;
+}
