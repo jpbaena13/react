@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import api from '../../api.js';
 
+import styles from './Post.css';
+
 class Post extends Component {
 	constructor(props) {
 		super(props);
@@ -34,22 +36,22 @@ class Post extends Component {
 
 	render() {
 		return (
-			<article id={`post-${this.props.id}`}>
+			<article id={`post-${this.props.id}`} className={styles.post}>
 				<Link to={`/post/${this.props.id}`}>
-					<h2>{this.props.title}</h2>
+					<h2 className={styles.title}>{this.props.title}</h2>
 				</Link>
 
-				<p>
+				<p className={styles.body}>
 					{this.props.body}
 				</p>
 
 				{!this.state.loading && (
-					<div>
-						<Link to={`/user/${this.state.user.id}`}>
+					<div className={styles.meta}>
+						<Link to={`/user/${this.state.user.id}`} className={styles.user}>
 							{this.state.user.name}
 						</Link>
 						
-						<span>
+						<span className={styles.comments}>
 							Hay {this.state.comments.length} Comentarios
 						</span>
 					</div>

@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import Post from '../../posts/containers/Post.jsx';
 import api from '../../api.js';
 import Loading from '../../shared/components/Loading.jsx';
+import Header from '../../shared/components/Header.jsx';
+
+import styles from './Page.css'
 
 class Home extends Component {
 
@@ -36,8 +39,6 @@ class Home extends Component {
 	}
 
 	handleScroll(event) {		
-		console.log(window.scrollY);
-		return null;
 		if (this.state.loading) return null;
 
 		const scrolled = window.scrollY;
@@ -67,10 +68,11 @@ class Home extends Component {
 
 	render() {
 		return (
-			<section name="home">
+			<section name="home" className={styles.section}>
+				<Header />
 				<h1>Home</h1>
 
-				<section>
+				<section className={styles.list}>
 					{ this.state.loading && ( 
 						<Loading />
 					)}
