@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 
-import api from '../../api.js';
+import api from '../../api.js'
 
 import styles from './Post.css';
 

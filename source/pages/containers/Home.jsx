@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 import Post from '../../posts/containers/Post.jsx';
 import api from '../../api.js';
@@ -67,6 +68,7 @@ class Home extends Component {
 	}
 
 	render() {
+		console.log(this.props);
 		return (
 			<section name="home" className={styles.section}>
 				<Header />
@@ -84,4 +86,17 @@ class Home extends Component {
 	}
 }
 
-export default Home;
+function mapStateToProps(state) {
+	return {
+		posts: state.posts.entities,
+		page: state.posts.page,
+	}
+}
+
+// function mapDispatchToProps( dispatch, props) {
+// 	return {
+// 		dispatch
+// 	}
+// }
+
+export default connect(mapStateToProps)(Home);
